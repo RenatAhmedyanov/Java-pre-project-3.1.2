@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+<style> table.users-list, .users-list td {
+    /*margin: 0 auto;*/
+    text-align: center;
+    border: 1px solid black ;
+    border-collapse: collapse;
+    padding: 4px;
+    font: bold 0.9rem sans-serif;
+    width: 20%;
+    }
+</style>
+<table class="users-list">
+    <tr>
+        <td>user id</td>
+        <td>user name</td>
+        <td>user age</td>
+        <td>user email</td>
+    </tr>
+    <th:block>
+        <tr>
+            <td th:text="${user.getId()}">userId</td>
+            <td th:text="${user.getName()}">userName</td>
+            <td th:text="${user.getAge()}">userAge</td>
+            <td th:text="${user.getEmail()}">userEmail</td>
+        </tr>
+    </th:block>
+</table>
+<br/>
+<form th:method="DELETE" th:action="@{/users/{id} (id = ${user.getId()})}">
+    <input type = "submit" value = "delete">
+</form>
+<br/>
+
+<form th:action="@{/users/{id}/edit (id = ${user.getId()})}">
+    <input type = "submit" value = "edit">
+</form>
+<br/>
+
+<form action="/users">
+    <button>show all</button>
+</form>
+
+</body>
+</html>
